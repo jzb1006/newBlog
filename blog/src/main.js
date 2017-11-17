@@ -70,7 +70,6 @@ axios.interceptors.request.use(function (config) {
     return config
   }, function (error) {
     // Do something with request error
-    console.log('请求失败')
     return Promise.reject(error)
   })
   
@@ -81,7 +80,8 @@ axios.interceptors.response.use(function (config) {
     return config
   }, function (error) {
     // Do something with request error
-    console.log('响应出错')
+    stores.dispatch('LOADING_HIDE')
+    alert('网络出错')
     return Promise.reject(error)
   })
 
