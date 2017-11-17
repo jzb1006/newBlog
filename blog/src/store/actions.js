@@ -1,0 +1,36 @@
+import * as types from './type'
+export default{
+  CHANGE_COLOR_TRUE:({commit})=>{
+     commit(types.CHANGE_COLOR_TRUE);
+  },
+  CHANGE_COLOR_FALSE:({commit})=>{
+    commit(types.CHANGE_COLOR_TRUE);
+  },
+  NAV_SHOW:({commit})=>{
+    commit(types.NAV_SHOW);
+  },
+  NAV_HIDE:({commit})=>{
+    commit(types.NAV_HIDE);
+  },
+  DIALOG_CLOSE:({commit})=>{
+    commit(types.DIALOG_CLOSE);
+  },
+  DIALOG_OPEN:({commit})=>{
+    commit(types.DIALOG_OPEN);
+  },
+  GET_ARTICLE:({commit})=>{
+    commit(types.GET_ARTICLE);
+  },
+  MODEFY_CLOSE:({commit})=>{
+    commit(types.MODEFY_CLOSE);
+  },
+  MODEFY_OPEN:({commit})=>{
+    commit(types.MODEFY_OPEN);
+  },
+  LOADING_HIDE:({commit})=>{
+    commit(types.LOADING_HIDE);
+  },
+  LOADING_SHOW:({commit})=>{
+    commit(types.LOADING_SHOW);
+  }
+}
