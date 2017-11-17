@@ -13,11 +13,11 @@
       </div>
 
       <div class="editor">
-        <mavon-editor @imgAdd="$imgAdd" @imgDel="$imgDel" style="height: 500px"  v-model="content"/>
+        <mavon-editor ref="md" @imgAdd="$imgAdd" @imgDel="$imgDel" style="height: 500px"  v-model="content"/>
       </div>
 
       <div class="button">
-        <!-- <mu-raised-button slot="actions"  primary @click="uplodeimg" label="上传图片"/> -->
+        <mu-raised-button slot="actions"  primary @click="uplodeimg" label="上传图片"/>
         <mu-raised-button slot="actions"  primary label="取消" @click="articleClose"/>
         <mu-raised-button slot="actions" primary  label="确定" @click="conform"/>
       </div>
@@ -97,20 +97,24 @@ export default {
     },
     uplodeimg($e){
       console.log(this.img_file)
-      let param = new FormData();
-      for(let _img in this.img_file){
-          param.append(_img,this.img_file[_img]);
+      var formdata = new FormData();
+      var _imglst = [];
+      for (var _img in this.img_file) {
+          formdata.append(_img, this.img_file[_img]);
+           _imglst.push([_img, this.img_file[_img]]);
       }
       this.$http({
         method:'post',
         url:'/act?act=addImg',
-        data:param,
-        headers: { 'Content-Type': 'multipart/form-data' }
+        data:this.img_file,
+        headers: { 'Content-Type': 'multipart/form-data' },
       }).then((res)=>{
         console.log(res)
       }).catch((err)=>{
         console.log(err)
       })
+      console.log(formdata)
+      console.log(_imglst)
     },
     articleClose(){
      this.$store.dispatch('DIALOG_CLOSE');
